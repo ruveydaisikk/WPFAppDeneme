@@ -1,0 +1,70 @@
+﻿<Window x:Class="WPFAppDeneme.EntryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="EntryWindow" Height="500" Width="670" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <!-- Senkronize Animasyonlar -->
+        <Storyboard x:Key="SynchronizedAnimation">
+            <!-- TEI Amblemi Animasyonu -->
+            <DoubleAnimation Storyboard.TargetName="TEI_Logo"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="0:0:2"/>
+            <DoubleAnimation Storyboard.TargetName="TEI_Logo"
+                             Storyboard.TargetProperty="RenderTransform.ScaleX"
+                             From="0.5" To="1" Duration="0:0:2"/>
+            <DoubleAnimation Storyboard.TargetName="TEI_Logo"
+                             Storyboard.TargetProperty="RenderTransform.ScaleY"
+                             From="0.5" To="1" Duration="0:0:2"/>
+
+            <!-- Hoş Geldiniz Metni Animasyonu -->
+            <DoubleAnimation Storyboard.TargetName="WelcomeText"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="0:0:2"/>
+            <DoubleAnimation Storyboard.TargetName="WelcomeText"
+                             Storyboard.TargetProperty="RenderTransform.ScaleX"
+                             From="0.5" To="1" Duration="0:0:2"/>
+            <DoubleAnimation Storyboard.TargetName="WelcomeText"
+                             Storyboard.TargetProperty="RenderTransform.ScaleY"
+                             From="0.5" To="1" Duration="0:0:2"/>
+        </Storyboard>
+    </Window.Resources>
+
+    <Grid Background="#000080">
+        <!-- Hoş geldiniz metni -->
+        <TextBlock Name="WelcomeText"
+                   Text="Welcome to MTAG Apps Market"
+                   FontSize="30"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Margin="0,50,0,0"
+                   Opacity="0"
+                   Foreground="White"
+                   RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+        <!-- TEI Amblemi -->
+        <Image Name="TEI_Logo"
+               Source="C:\Users\vahde\Downloads\Rüveyda\tei-logo.png"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               RenderTransformOrigin="0.5,0.5"
+               Stretch="Uniform"
+               Opacity="0"
+               Height="400" Width="400">
+            <Image.RenderTransform>
+                <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
+            </Image.RenderTransform>
+        </Image>
+
+        <Grid.Triggers>
+            <EventTrigger RoutedEvent="Window.Loaded">
+                <BeginStoryboard Storyboard="{StaticResource SynchronizedAnimation}"/>
+            </EventTrigger>
+        </Grid.Triggers>
+    </Grid>
+</Window>
+
