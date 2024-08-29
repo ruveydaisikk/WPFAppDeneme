@@ -1,0 +1,38 @@
+﻿<Window x:Class="WPFAppDeneme.RequestFormWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Request Form" Height="600" Width="400" Background="#2C3E50" Foreground="White" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Margin="20">
+        <StackPanel>
+
+            <TextBlock Text="New Application Request" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <TextBlock Text="Application Name:" FontSize="16" Margin="5"/>
+            <TextBox Name="AppNameTextBox" Height="30" Margin="5" FontSize="16" Background="#34495E" Foreground="White"/>
+
+            
+            <TextBlock Text="Opening Date:" FontSize="16" Margin="5"/>
+            <DatePicker Name="OpenDatePicker" Height="30" Margin="5" FontSize="17" Background="#34495E" Foreground="Black" />
+
+            
+            <TextBlock Text="Request Description:" FontSize="16" Margin="5"/>
+            <TextBox Name="DescriptionTextBox" Height="100" Margin="5" FontSize="16" TextWrapping="Wrap" 
+                     AcceptsReturn="True" Background="#34495E" Foreground="White"/>
+
+            
+            <TextBlock Text="Category Selection:" FontSize="16" Margin="5"/>
+            <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                <CheckBox Name="MaterialCheckBox" Content="Material" Margin="5" Background="#34495E" Foreground="White"/>
+                <CheckBox Name="StructuralCheckBox" Content="Structural" Margin="5" Background="#34495E" Foreground="White"/>
+                <CheckBox Name="ThermalCheckBox" Content="Thermal" Margin="5" Background="#34495E" Foreground="White"/>
+                <CheckBox Name="MechanicalCheckBox" Content="Mechanical" Margin="5" Background="#34495E" Foreground="White"/>
+            </StackPanel>
+
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5,20,0,0">
+                <Button Content="Cancel" Width="100" Height="30" Margin="5" Background="#E74C3C" Foreground="White" Click="CancelRequest_Click"/>
+                <Button Content="Submit" Width="100" Height="30" Margin="5" Background="#27AE60" Foreground="White" Click="SubmitRequest_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

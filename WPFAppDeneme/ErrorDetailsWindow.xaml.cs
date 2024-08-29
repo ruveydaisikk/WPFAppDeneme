@@ -14,20 +14,14 @@ using System.Windows.Shapes;
 
 namespace WPFAppDeneme
 {
-    /// <summary>
-    /// SuccessWindow.xaml etkileşim mantığı
-    /// </summary>
-    public partial class SuccessWindow : Window
-    {
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
 
-        public SuccessWindow()
+    public partial class ErrorDetailsWindow : Window
+    {
+        public ErrorDetailsWindow(List<string> errorMessages)
         {
             InitializeComponent();
+            ErrorListBox.ItemsSource = errorMessages;
         }
-   
     }
 }
+

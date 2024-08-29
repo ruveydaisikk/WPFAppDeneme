@@ -81,8 +81,47 @@ namespace WPFAppDeneme
             // LoginWindow'u oluşturup açın
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
-        }
-    }
- 
 
+        }
+        private void OpenRequestForm_Click(object sender, RoutedEventArgs e)
+        {
+            RequestFormWindow requestFormWindow = new RequestFormWindow();
+            requestFormWindow.ShowDialog();
+
+        }
+        private void CheckForErrors_Click(object sender, RoutedEventArgs e)
+        {
+            // Example: List of error messages
+            List<string> errorMessages = new List<string>();
+
+            // Simulate checking for errors in the apps (this would be your actual logic)
+            errorMessages.Add("App A has a missing configuration file.");
+            errorMessages.Add("App B encountered a runtime exception.");
+            errorMessages.Add("App C failed to load required resources.");
+
+            // If there are errors, show the ErrorDetailsWindow
+            if (errorMessages.Count > 0)
+            {
+                ErrorDetailsWindow errorWindow = new ErrorDetailsWindow(errorMessages);
+                errorWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No errors found.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void ViewErrors_Click(object sender, RoutedEventArgs e)
+        {
+            // Example error data
+            string appName = "App A";
+            string errorDetails = "Error 1: Issue with loading resources.\nError 2: Unexpected null reference.";
+
+            // Open the error report window with the app name and error details
+            ErrorReportWindow errorWindow = new ErrorReportWindow(appName, errorDetails);
+            errorWindow.ShowDialog();
+        }
+    
+
+    }
 }

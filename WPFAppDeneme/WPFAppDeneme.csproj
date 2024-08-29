@@ -67,8 +67,15 @@
     <Compile Include="AppCreatorWindow.xaml.cs">
       <DependentUpon>AppCreatorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppItem.cs" />
     <Compile Include="EntryWindow.xaml.cs">
       <DependentUpon>EntryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorDetailsWindow.xaml.cs">
+      <DependentUpon>ErrorDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorReportWindow.xaml.cs">
+      <DependentUpon>ErrorReportWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -76,6 +83,9 @@
     <Compile Include="Models\Class1.cs" />
     <Compile Include="PasswordResetWindow.xaml.cs">
       <DependentUpon>PasswordResetWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RequestFormWindow.xaml.cs">
+      <DependentUpon>RequestFormWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SomeWindow.cs" />
     <Compile Include="SuccessWindow.xaml.cs">
@@ -99,6 +109,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ErrorDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ErrorReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,6 +134,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PasswordResetWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RequestFormWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
