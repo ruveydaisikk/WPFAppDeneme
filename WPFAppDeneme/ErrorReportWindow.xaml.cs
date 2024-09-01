@@ -1,45 +1,75 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace WPFAppDeneme
 {
     public partial class ErrorReportWindow : Window
     {
-        private string _appName;
+        private string errorDetails;
 
-        public ErrorReportWindow(string appName, string errorDetails)
+        public ErrorReportWindow(string appName)
         {
             InitializeComponent();
-            _appName = appName;
-            Title = $"Error Report for {_appName}";
+        }
+
+        public ErrorReportWindow(string appName, string errorDetails) : this(appName)
+        {
+            this.errorDetails = errorDetails;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            // Get the selected category
-            string selectedCategory = ((ComboBoxItem)CategoryComboBox.SelectedItem).Content.ToString();
-
-            // Get the error details
+            string category = ((ComboBoxItem)CategoryComboBox.SelectedItem).Content.ToString();
             string errorDetails = ErrorDetailsBox.Text;
 
-            // Save the error details and category
-            string fileName = $"{_appName}_Errors.txt";
-            string content = $"Category: {selectedCategory}\n\nError Details:\n{errorDetails}";
-            File.WriteAllText(fileName, content);
+            try
+            {
+                Excel.Application excelApp = new Excel.Application();
+                if (excelApp == null)
+                {
+                    MessageBox.Show("Excel is not installed.");
+                    return;
+                }
 
-            MessageBox.Show("Error details saved successfully.");
+                string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\ErrorReports.xlsx";
+                Excel.Workbook workbook;
+                Excel.Worksheet worksheet;
+
+                if (System.IO.File.Exists(filePath))
+                {
+                    workbook = excelApp.Workbooks.Open(filePath);
+                    worksheet = workbook.Sheets[1];
+                }
+                else
+                {
+                    workbook = excelApp.Workbooks.Add();
+                    worksheet = workbook.Worksheets[1];
+
+                    
+                    worksheet.Cells[1, 1] = "Category";
+                    worksheet.Cells[1, 2] = "Error Details";
+                }
+
+             
+                int lastRow = worksheet.Cells[worksheet.Rows.Count, 1].End(Excel.XlDirection.xlUp).Row + 1;
+
+             
+                worksheet.Cells[lastRow, 1] = category;
+                worksheet.Cells[lastRow, 2] = errorDetails;
+
+                
+                workbook.SaveAs(filePath);
+                workbook.Close(false);
+                excelApp.Quit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving to Excel: " + ex.Message);
+            }
+
+            MessageBox.Show("Error report saved successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -47,5 +77,4 @@ namespace WPFAppDeneme
             this.Close();
         }
     }
-
 }

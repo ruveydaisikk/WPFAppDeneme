@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,11 +20,52 @@ namespace WPFAppDeneme
 {
     public partial class MainWindow : Window
     {
+        private string counterFilePath = "userCount.txt";
+
         public MainWindow()
         {
             InitializeComponent();
+            UpdateDailyLoginCount();
+
         }
-        private void EngineeringTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void UpdateDailyLoginCount()
+        {
+            int dailyUserCount = 0;
+            DateTime lastLoginDate = DateTime.MinValue;
+
+            // Read the current count and last login date from the file, if it exists
+            if (File.Exists(counterFilePath))
+            {
+                string[] lines = File.ReadAllLines(counterFilePath);
+                if (lines.Length >= 2)
+                {
+                    int.TryParse(lines[0], out dailyUserCount);
+                    DateTime.TryParse(lines[1], out lastLoginDate);
+                }
+            }
+
+            // Get today's date
+            DateTime currentDate = DateTime.Now.Date;
+
+            // Check if the current date is different from the last login date
+            if (currentDate > lastLoginDate)
+            {
+                dailyUserCount = 1;  // Reset count for a new day
+                lastLoginDate = currentDate;
+            }
+            else
+            {
+                dailyUserCount++; // Increment for the same day
+            }
+
+            // Save the updated count and last login date back to the file
+            File.WriteAllLines(counterFilePath, new string[] { dailyUserCount.ToString(), lastLoginDate.ToString() });
+
+            // Update the TextBlock to display the daily login count
+            UserCountTextBlock.Text = $"Daily Login: {dailyUserCount}";
+        }
+    
+    private void EngineeringTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Process.Start(new ProcessStartInfo("https://en.wikipedia.org/wiki/Engineering")
             {
@@ -122,6 +164,5 @@ namespace WPFAppDeneme
             errorWindow.ShowDialog();
         }
     
-
     }
 }

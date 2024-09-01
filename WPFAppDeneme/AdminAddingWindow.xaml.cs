@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace WPFAppDeneme
 {
@@ -23,7 +13,7 @@ namespace WPFAppDeneme
 
         private void AddAdminButton_Click(object sender, RoutedEventArgs e)
         {
-            // Get the admin details from the UI
+            
             string username = UsernameTextBox.Text;
             string email = EmailTextBox.Text;
             string password = PasswordBox.Password;
@@ -34,11 +24,55 @@ namespace WPFAppDeneme
                 return;
             }
 
-            // Add logic here to save the new admin (e.g., to a database, file, etc.)
-            // For simplicity, we'll show a success message
-            MessageBox.Show($"Admin '{username}' added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            try
+            {
+                Excel.Application excelApp = new Excel.Application();
+                if (excelApp == null)
+                {
+                    MessageBox.Show("Excel is not installed.");
+                    return;
+                }
 
-            // Optionally, clear the input fields after adding the admin
+                string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\AdminList.xlsx";
+                Excel.Workbook workbook;
+                Excel.Worksheet worksheet;
+
+                if (System.IO.File.Exists(filePath))
+                {
+                    workbook = excelApp.Workbooks.Open(filePath);
+                    worksheet = workbook.Sheets[1];
+                }
+                else
+                {
+                    workbook = excelApp.Workbooks.Add();
+                    worksheet = workbook.Worksheets[1];
+
+                    
+                    worksheet.Cells[1, 1] = "Username";
+                    worksheet.Cells[1, 2] = "Email";
+                    worksheet.Cells[1, 3] = "Password";
+                }
+
+               
+                int lastRow = worksheet.Cells[worksheet.Rows.Count, 1].End(Excel.XlDirection.xlUp).Row + 1;
+
+            
+                worksheet.Cells[lastRow, 1] = username;
+                worksheet.Cells[lastRow, 2] = email;
+                worksheet.Cells[lastRow, 3] = password;
+
+             
+                workbook.SaveAs(filePath);
+                workbook.Close(false);
+                excelApp.Quit();
+
+                MessageBox.Show($"Admin '{username}' added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving to Excel: " + ex.Message);
+            }
+
             UsernameTextBox.Clear();
             EmailTextBox.Clear();
             PasswordBox.Clear();

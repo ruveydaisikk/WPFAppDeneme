@@ -9,7 +9,7 @@
                    HorizontalAlignment="Center" 
                    VerticalAlignment="Top" 
                    Foreground="Firebrick"
-                   Margin="105,3,103.2,0" Width="235"/>
+                   Margin="113,4,95.2,0" Width="235"/>
         <StackPanel Margin="20,60,20,0">
 
             <TextBlock Text="Category:" FontSize="14" FontWeight="Bold"/>
@@ -49,8 +49,8 @@
                 Background="Bisque"
                 Click="CloseButton_Click"/>
 
-        <Label Content="(Please write in detail where you got the error and to what extent it is.)" HorizontalAlignment="Left" Height="30" Margin="10,34,0,0"  Foreground="Black"
+        <Label Content="(Please write in detail where you got the error and to what extent it is.)" HorizontalAlignment="Left" Height="30" Margin="10,33,0,0"  Foreground="Black"
                FontSize="12.5"   FontWeight="Bold" 
-               VerticalAlignment="Top" Width="423"/>
+               VerticalAlignment="Top" Width="433"/>
     </Grid>
 </Window>

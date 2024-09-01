@@ -1,70 +1,70 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Newtonsoft.Json;
-using System.IO;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace WPFAppDeneme
 {
-    /// <summary>
-    /// AppCreatorWindow.xaml etkileşim mantığı
-    /// </summary>
     public partial class AppCreatorWindow : Window
     {
         public AppCreatorWindow()
         {
             InitializeComponent();
         }
+
         private void CreateAppButton_Click(object sender, RoutedEventArgs e)
         {
             string appName = AppNameTextBox.Text;
-            string category = (CategoryComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+            string selectedCategory = ((ComboBoxItem)CategoryComboBox.SelectedItem).Content.ToString();
 
-            if (!string.IsNullOrEmpty(appName) && !string.IsNullOrEmpty(category))
+            try
             {
-                MessageBox.Show($"Application '{appName}' created under the '{category}' category.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                Excel.Application excelApp = new Excel.Application();
+                if (excelApp == null)
+                {
+                    MessageBox.Show("Excel is not installed.");
+                    return;
+                }
 
-                // Load existing apps and add the new one
-                var apps = LoadApps() ?? new List<App>();
-                apps.Add(new App { Name = appName, Category = category });
+                string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\ApplicationsList.xlsx";
+                Excel.Workbook workbook;
+                Excel.Worksheet worksheet;
 
-                // Save to JSON file
-                SaveApps(apps);
+                if (System.IO.File.Exists(filePath))
+                {
+                    workbook = excelApp.Workbooks.Open(filePath);
+                    worksheet = workbook.Sheets[1];
+                }
+                else
+                {
+                    workbook = excelApp.Workbooks.Add();
+                    worksheet = workbook.Worksheets[1];
+
+                    
+                    worksheet.Cells[1, 1] = "Application Name";
+                    worksheet.Cells[1, 2] = "Category";
+                }
+
+         
+                int lastRow = worksheet.Cells[worksheet.Rows.Count, 1].End(Excel.XlDirection.xlUp).Row + 1;
+
+                worksheet.Cells[lastRow, 1] = appName;
+                worksheet.Cells[lastRow, 2] = selectedCategory;
+
+                workbook.SaveAs(filePath);
+                workbook.Close(false);
+                excelApp.Quit();
+
+                MessageBox.Show("Application created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please enter all details.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error saving to Excel: " + ex.Message);
             }
+
+           
+            AppNameTextBox.Clear();
+            CategoryComboBox.SelectedIndex = 0;
         }
-
-     
-
-public void SaveApps(List<App> apps)
-    {
-        string json = JsonConvert.SerializeObject(apps, Formatting.Indented);
-        File.WriteAllText("apps.json", json);
     }
-
-    public List<App> LoadApps()
-    {
-        if (File.Exists("apps.json"))
-        {
-            string json = File.ReadAllText("apps.json");
-            return JsonConvert.DeserializeObject<List<App>>(json);
-        }
-        return new List<App>();
-    }
-
-
-}
 }

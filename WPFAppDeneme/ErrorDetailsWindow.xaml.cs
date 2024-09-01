@@ -12,16 +12,34 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WPFAppDeneme
-{
 
-    public partial class ErrorDetailsWindow : Window
+using System.Diagnostics;
+using System.Windows.Navigation;
+
+namespace WPFAppDeneme
     {
+        public partial class ErrorDetailsWindow : Window
+        {
+        private List<string> errorMessages;
+
+        public ErrorDetailsWindow(Dictionary<string, string> errorMessagesWithLinks)
+            {
+                InitializeComponent();
+                ErrorListBox.ItemsSource = errorMessagesWithLinks;
+            }
+
         public ErrorDetailsWindow(List<string> errorMessages)
         {
-            InitializeComponent();
-            ErrorListBox.ItemsSource = errorMessages;
+            this.errorMessages = errorMessages;
         }
-    }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+            {
+                Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });
+                e.Handled = true;
+            }
+        }
+  
+
 }
 

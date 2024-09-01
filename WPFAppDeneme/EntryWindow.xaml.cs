@@ -22,23 +22,28 @@ using System.Windows.Threading;
         {
             InitializeComponent();
 
-            // Zamanlayıcı ile animasyon tamamlandıktan sonra ana pencereye geçiş
+            
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(3); // 3 saniye
+            timer.Interval = TimeSpan.FromSeconds(3);
             timer.Tick += Timer_Tick;
             timer.Start();
         }
-
-        private void Timer_Tick(object sender, EventArgs e)
+        private void MainWindowButton_Click(object sender, RoutedEventArgs e)
         {
-            // Zamanlayıcıyı durdur
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close(); 
+        }
+    
+    private void Timer_Tick(object sender, EventArgs e)
+        {
+            
             (sender as DispatcherTimer).Stop();
 
-            // Ana pencereyi aç
+           
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
 
-            // Giriş penceresini kapat
             this.Close();
         }
        

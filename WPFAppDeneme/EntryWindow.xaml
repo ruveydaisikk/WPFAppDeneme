@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="EntryWindow" Height="500" Width="670" WindowStartupLocation="CenterScreen">
 
+    
     <Window.Resources>
-        <!-- Senkronize Animasyonlar -->
+       
         <Storyboard x:Key="SynchronizedAnimation">
-            <!-- TEI Amblemi Animasyonu -->
+          
             <DoubleAnimation Storyboard.TargetName="TEI_Logo"
                              Storyboard.TargetProperty="Opacity"
                              From="0" To="1" Duration="0:0:2"/>
@@ -17,7 +18,6 @@
                              Storyboard.TargetProperty="RenderTransform.ScaleY"
                              From="0.5" To="1" Duration="0:0:2"/>
 
-            <!-- Hoş Geldiniz Metni Animasyonu -->
             <DoubleAnimation Storyboard.TargetName="WelcomeText"
                              Storyboard.TargetProperty="Opacity"
                              From="0" To="1" Duration="0:0:2"/>
@@ -31,7 +31,7 @@
     </Window.Resources>
 
     <Grid Background="#000080">
-        <!-- Hoş geldiniz metni -->
+     
         <TextBlock Name="WelcomeText"
                    Text="Welcome to MTAG Apps Market"
                    FontSize="30"
@@ -46,7 +46,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
 
-        <!-- TEI Amblemi -->
+        
         <Image Name="TEI_Logo"
                Source="C:\Users\vahde\Downloads\Rüveyda\tei-logo.png"
                HorizontalAlignment="Center"
