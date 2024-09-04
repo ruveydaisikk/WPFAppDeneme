@@ -29,65 +29,96 @@ namespace WPFAppDeneme
             // Kullanıcı adı ve şifre kontrolü
             if (username == "admin" && password == "1234")
             {
-                // Doğruysa yeni pencereyi aç
+               
                 AppCreatorWindow appCreatorWindow = new AppCreatorWindow();
                 appCreatorWindow.Show();
                 this.Close(); // Mevcut pencereyi kapat
             }
             else
             {
-                // Hatalı giriş uyarısı
+           
                 MessageBox.Show("Username or Password is incorrect.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-                private void Button_Click(object sender, RoutedEventArgs e)
-                {
-                    // Predefined credentials (make sure they match exactly)
-                    string correctUsername = "admin";
-                    string correctPassword = "password123";
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            string correctUsername = "admin";
+            string correctPassword = "password123";
 
-                    // Retrieve entered credentials and trim any extra spaces
-                    string enteredUsername = UsernameTextBox.Text.Trim();
-                    string enteredPassword = PasswordBox.Password.Trim();
+            
+            string enteredUsername = UsernameTextBox.Text.Trim();
+            string enteredPassword = PasswordBox.Password.Trim();
 
-                    // Debugging: Show what the input values are
-                    MessageBox.Show($"Entered Username: '{enteredUsername}'\nEntered Password: '{enteredPassword}'", "Debug Info");
+            MessageBox.Show($"Entered Username: '{enteredUsername}'\nEntered Password: '{enteredPassword}'", "Debug Info");
 
-                    // Temporary simple validation for debugging
-                    if (enteredUsername.Equals(correctUsername) && enteredPassword.Equals(correctPassword))
-                    {
-                        MessageBox.Show("Login successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        this.DialogResult = true; // Close the login window
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                }
-                private void ForgotPassword_Click(object sender, MouseButtonEventArgs e)
-                {
-                    MessageBox.Show("Please contact support at support@example.com for password recovery.", "Forgot Password", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
+            
+            if (enteredUsername.Equals(correctUsername) && enteredPassword.Equals(correctPassword))
+            {
+                MessageBox.Show("Login successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.DialogResult = true; 
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private void ForgotPassword_Click(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Please contact support at support@example.com for password recovery.", "Forgot Password", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
 
 
-                private void ForgotPasswordButton_Click(object sender, RoutedEventArgs e)
-                {
+        private void ForgotPasswordButton_Click(object sender, RoutedEventArgs e)
+        {
 
-                    PasswordResetWindow passwordResetWindow = new PasswordResetWindow();
-                    passwordResetWindow.ShowDialog();
-                }
+            PasswordResetWindow passwordResetWindow = new PasswordResetWindow();
+            passwordResetWindow.ShowDialog();
+        }
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            // Create an instance of the AdminAddingWindow
+
             AdminAddingWindow adminWindow = new AdminAddingWindow();
 
-            // Show the AdminAddingWindow
             adminWindow.ShowDialog();
         }
-    }
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            
+            PasswordBox.Visibility = Visibility.Collapsed;
+            ShowPasswordTextBox.Visibility = Visibility.Visible;
+            ShowPasswordTextBox.Text = PasswordBox.Password;
         }
-    
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            PasswordBox.Visibility = Visibility.Visible;
+            ShowPasswordTextBox.Visibility = Visibility.Collapsed;
+            PasswordBox.Password = ShowPasswordTextBox.Text;
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (ShowPasswordTextBox.Visibility == Visibility.Visible)
+            {
+                ShowPasswordTextBox.Text = PasswordBox.Password;
+            }
+        }
+
+        private void ShowPasswordTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           
+            if (PasswordBox.Visibility == Visibility.Visible)
+            {
+                PasswordBox.Password = ShowPasswordTextBox.Text;
+            }
+        }
+    }
+
+ 
+}
+
 
 
 

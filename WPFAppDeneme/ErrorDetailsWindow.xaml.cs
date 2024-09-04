@@ -1,45 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
-
-using System.Diagnostics;
-using System.Windows.Navigation;
 
 namespace WPFAppDeneme
+{
+    public partial class ErrorDetailsWindow : Window
     {
-        public partial class ErrorDetailsWindow : Window
-        {
-        private List<string> errorMessages;
+        private Dictionary<string, string> errorUrls = new Dictionary<string, string>();
 
-        public ErrorDetailsWindow(Dictionary<string, string> errorMessagesWithLinks)
+        public ErrorDetailsWindow(List<string> errors)
+        {
+            InitializeComponent();
+
+            
+            foreach (var error in errors)
             {
-                InitializeComponent();
-                ErrorListBox.ItemsSource = errorMessagesWithLinks;
+                ErrorListBox.Items.Add(error);
             }
 
-        public ErrorDetailsWindow(List<string> errorMessages)
-        {
-            this.errorMessages = errorMessages;
+            
+            errorUrls["Has a missing configuration file."] = "https://stackoverflow.com/questions/45807518/missing-app-config-file-and-option-on-add-new-item-does-not-show-configuratio";
+            errorUrls["Encountered a runtime exception."] = "https://stackoverflow.com/questions/9898444/java-lang-runtimeexception-unable-to-start-activity-componentinfo";
+            errorUrls["Failed to load required resources."] = "https://stackoverflow.com/questions/52310552/failed-to-load-resources";
+            errorUrls["Performance Issues."] = "https://stackoverflow.com/questions/78315170/typo3-frontend-performance-issues-slow-page-loading";
         }
 
-        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        private void ErrorListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedError = ErrorListBox.SelectedItem as string;
+            if (selectedError != null && errorUrls.ContainsKey(selectedError))
             {
-                Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });
-                e.Handled = true;
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = errorUrls[selectedError],
+                    UseShellExecute = true
+                });
             }
         }
-  
-
+    }
 }
-

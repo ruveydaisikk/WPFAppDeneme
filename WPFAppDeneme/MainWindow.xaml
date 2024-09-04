@@ -30,7 +30,7 @@
                              Background="#FFFFFF"
                              GotFocus="SearchBox_GotFocus" 
                              LostFocus="SearchBox_LostFocus"/>
-                    
+                    <Button Content="Load JSON" Click="Button_Click"/>
                     <TextBlock Name="UserCountTextBlock" 
            HorizontalAlignment="Center" 
            VerticalAlignment="Bottom" 
@@ -49,8 +49,7 @@
 
                         <TextBlock Text="Admin" Foreground="White" FontSize="26" Margin="55,0,0,0" MouseLeftButtonDown="AdminTextBlock_MouseLeftButtonDown"/>
                         <Image Source="C:\Users\vahde\Downloads\Rüveyda\admin.png" Width="100" Height="70" Margin="8" MouseLeftButtonDown="AdminTextBlock_MouseLeftButtonDown"/>
-
-                        <TextBlock Text="Görüş ve Önerileriniz" Foreground="White" FontSize="21.5" Margin="0,0,0,0" MouseLeftButtonDown="SuggestionsTextBlock_MouseLeftButtonDown"/>
+                        <TextBlock Text="Opinions and suggestions" Foreground="White" FontSize="17" MouseLeftButtonDown="SuggestionsTextBlock_MouseLeftButtonDown"/>
                         <Image Source="C:\Users\vahde\Downloads\Rüveyda\5229730.jpg" Width="100" Height="80" Margin="8" MouseLeftButtonDown="SuggestionsTextBlock_MouseLeftButtonDown"/>
                     </StackPanel>
                 </StackPanel>
@@ -136,6 +135,8 @@
                             <TextBlock Text="V:4.0.0 Release" Foreground="Gray" FontSize="10" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Border>
+
+
                     <Button Content="Open Request Form" 
         Width="159" Height="42" 
         HorizontalAlignment="Center" 
@@ -145,8 +146,9 @@
         Foreground="White"
         FontWeight="Bold"
         BorderBrush="#FF50B8EE"
-        Click="OpenRequestForm_Click" Margin="9.8,0,29.6,716.4" Grid.Row="1" Grid.Column="3" 
+        Click="OpenRequestForm_Click" Margin="9.8,0,29.6,708.4" Grid.Row="1" Grid.Column="3" 
         >
+
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#FF5722"/>
@@ -159,6 +161,7 @@
                                 </Style.Triggers>
                             </Style>
                         </Button.Style>
+
                     </Button>
                 </Grid>
             </Grid>

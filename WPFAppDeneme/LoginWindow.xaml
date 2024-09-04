@@ -34,7 +34,7 @@
                 FontWeight="Bold"
                 FontStyle="Italic"
                 Click="AdminButton_Click" Width="97" Height="22"/>
-        
+
         <TextBlock Text="Username:" 
                    Grid.Row="1" 
                    FontSize="18"
@@ -89,8 +89,6 @@
                 <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="5"/>
             </Button.Effect>
         </Button>
-
-
         <Button Content="Forgot Password?" 
                 Grid.Row="5" 
                 Width="160" 
@@ -104,5 +102,29 @@
                 <DropShadowEffect BlurRadius="5" ShadowDepth="2"/>
             </Button.Effect>
         </Button>
+        <TextBox Name="ShowPasswordTextBox"
+                 Grid.Row="4"
+                 Height="35"
+                 FontSize="14"
+                 Padding="5"
+                 Background="#FFF7E8DB"
+                 Foreground="Black"
+                 BorderBrush="#1F2839"
+                 BorderThickness="1"
+                 Margin="0,0,0,20"
+                 Visibility="Collapsed" />
+        <CheckBox Content="Show password" 
+                  HorizontalAlignment="Left"
+                  Height="22" 
+                  Margin="341,27.8,0,0" 
+                  Grid.Row="6"  
+                  Foreground="White"
+                  FontSize="16"
+                  FontWeight="Bold"  
+                  BorderBrush="AntiqueWhite"
+                  VerticalAlignment="Top" 
+                  Width="138"
+                  Checked="CheckBox_Checked"
+                  Unchecked="CheckBox_Unchecked"/>
     </Grid>
 </Window>

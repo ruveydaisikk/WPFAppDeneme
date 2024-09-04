@@ -18,5 +18,7 @@ namespace WPFAppDeneme
         }
         public string Name { get; internal set; }
         public string Category { get; internal set; }
-    }
+            public string Version { get; set; }
+            public string Color { get; set; }
+        }
 }
