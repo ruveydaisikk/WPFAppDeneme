@@ -54,7 +54,6 @@
                      Margin="-1,38.4,0.4,225.4" Grid.RowSpan="3"
                      />
 
-            <!-- Category Selection -->
             <TextBlock Text="Select Category:" 
                        Grid.Row="3" 
                        FontSize="18"

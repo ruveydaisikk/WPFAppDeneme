@@ -16,6 +16,7 @@ namespace WPFAppDeneme
         {
             string appName = AppNameTextBox.Text;
             string selectedCategory = ((ComboBoxItem)CategoryComboBox.SelectedItem).Content.ToString();
+            string creationDate = DateTime.Now.ToString("dd-MM-yyyy HH:mm"); // Tarih formatı: Gün-Ay-Yıl Saat:Dakika
 
             try
             {
@@ -40,16 +41,21 @@ namespace WPFAppDeneme
                     workbook = excelApp.Workbooks.Add();
                     worksheet = workbook.Worksheets[1];
 
-                    
+                    // Başlıkları ekleyin
                     worksheet.Cells[1, 1] = "Application Name";
                     worksheet.Cells[1, 2] = "Category";
+                    worksheet.Cells[1, 3] = "Creation Date"; // Yeni sütun: Kayıt Tarihi
                 }
 
-         
+                // Son satırı bulup yeni veriyi ekleyin
                 int lastRow = worksheet.Cells[worksheet.Rows.Count, 1].End(Excel.XlDirection.xlUp).Row + 1;
 
                 worksheet.Cells[lastRow, 1] = appName;
                 worksheet.Cells[lastRow, 2] = selectedCategory;
+                worksheet.Cells[lastRow, 3] = creationDate; // Kayıt tarihini ekleyin
+
+                // Hücre genişliğini otomatik ayarla
+                worksheet.Columns["A:C"].AutoFit();
 
                 workbook.SaveAs(filePath);
                 workbook.Close(false);
@@ -62,7 +68,7 @@ namespace WPFAppDeneme
                 MessageBox.Show("Error saving to Excel: " + ex.Message);
             }
 
-           
+            // Formu temizleyin
             AppNameTextBox.Clear();
             CategoryComboBox.SelectedIndex = 0;
         }
