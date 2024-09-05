@@ -23,6 +23,7 @@ namespace WPFAppDeneme
         {
             string category = ((ComboBoxItem)CategoryComboBox.SelectedItem).Content.ToString();
             string errorDetails = ErrorDetailsBox.Text;
+            string creationDate = DateTime.Now.ToString("MM-dd-yyyy HH:mm"); 
 
             try
             {
@@ -50,6 +51,7 @@ namespace WPFAppDeneme
                     
                     worksheet.Cells[1, 1] = "Category";
                     worksheet.Cells[1, 2] = "Error Details";
+                    worksheet.Cells[1, 3] = "Creation Date"; 
                 }
 
              
@@ -58,8 +60,10 @@ namespace WPFAppDeneme
              
                 worksheet.Cells[lastRow, 1] = category;
                 worksheet.Cells[lastRow, 2] = errorDetails;
+                worksheet.Cells[lastRow, 3] = creationDate;
 
-                
+                worksheet.Columns["A:C"].AutoFit();
+
                 workbook.SaveAs(filePath);
                 workbook.Close(false);
                 excelApp.Quit();

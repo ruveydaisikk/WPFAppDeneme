@@ -201,9 +201,17 @@
     <Compile Include="AdminAddingWindow.xaml.cs">
       <DependentUpon>AdminAddingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AlpaPage.cs" />
     <Compile Include="AppCreatorWindow.xaml.cs">
       <DependentUpon>AppCreatorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ApplicationPage.cs" />
+    <Compile Include="BasePage.cs" />
+    <Compile Include="DeltaPage.cs" />
+    <Compile Include="DeltaPage.xaml.cs">
+      <DependentUpon>DeltaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeltaPageBase.cs" />
     <Compile Include="EntryPage.xaml.cs">
       <DependentUpon>EntryPage.xaml</DependentUpon>
     </Compile>
@@ -245,6 +253,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AppCreatorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeltaPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -384,7 +396,11 @@
     </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <ProjectExtensions />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties json-schema1_1json__JsonSchema="https://carafe.fm/schema/draft-02/bundle.schema.json" />
+    </VisualStudio>
+  </ProjectExtensions>
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Error Report" Height="450" Width="450">
     <Grid Background="#f0f0f0">
-        <TextBlock Text="Error Report for App" 
+        <TextBlock 
                    FontSize="22" 
                    FontWeight="Bold" 
                    HorizontalAlignment="Center" 
                    VerticalAlignment="Top" 
                    Foreground="Firebrick"
-                   Margin="113,4,95.2,0" Width="235"/>
+                   Margin="113,4,95.2,0" Width="235"><Run Text="  "/><Run Text="Error Report for App"/></TextBlock>
         <StackPanel Margin="20,60,20,0">
 
             <TextBlock Text="Category:" FontSize="14" FontWeight="Bold"/>

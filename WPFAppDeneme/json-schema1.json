@@ -1,20 +1,37 @@
-{
-  "Items": [
-    {
-      "Name": "Engineering",
-      "ImageSource": "C:\\Users\\vahde\\Downloads\\Rüveyda\\engineering_2861721 (1).png"
-    },
-    {
-      "Name": "Plugins",
-      "ImageSource": "C:\\Users\\vahde\\Downloads\\Rüveyda\\web-plugin.png"
-    },
-    {
-      "Name": "Productivity",
-      "ImageSource": "C:\\Users\\vahde\\Downloads\\Rüveyda\\productivity.png"
-    },
-    {
-      "Name": "Admin",
-      "ImageSource": "C:\\Users\\vahde\\Downloads\\Rüveyda\\admin.png"
-    }
-  ]
-}
+[
+  {
+    "Name": "Delta",
+    "Description": "Delta Application",
+    "Page": "DeltaPage",
+    "Version": "4.0.0",
+    "CreationDate": "2024-09-01"
+  },
+  {
+    "Name": "Base",
+    "Description": "Base Application",
+    "Page": "BasePage",
+    "Version": "2.1.0",
+    "CreationDate": "2023-11-15"
+  },
+  {
+    "Name": "Alpha",
+    "Description": "Alpha Application",
+    "Page": "AlphaPage",
+    "Version": "3.5.0",
+    "CreationDate": "2023-12-20"
+  },
+  {
+    "Name": "FIRTREE",
+    "Description": "FIRTREE Application",
+    "Page": "FIRTREEPage",
+    "Version": "1.0.0",
+    "CreationDate": "2024-05-10"
+  },
+  {
+    "Name": "OMEGA",
+    "Description": "OMEGA Application",
+    "Page": "OMEGAPage",
+    "Version": "2.3.1",
+    "CreationDate": "2024-07-25"
+  }
+]

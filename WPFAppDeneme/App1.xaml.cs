@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using OfficeOpenXml;
 
 namespace WPFAppDeneme
 {
@@ -15,8 +16,12 @@ namespace WPFAppDeneme
     {
         public App()
         {
+           
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
         }
-        public string Name { get; internal set; }
+    
+
+    public string Name { get; internal set; }
         public string Category { get; internal set; }
             public string Version { get; set; }
             public string Color { get; set; }

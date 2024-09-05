@@ -1,0 +1,47 @@
+﻿<Window x:Class="WPFAppDeneme.DeltaPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DeltaPage" Height="580" Width="600" Background="Bisque">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Delta Application" FontSize="35" FontWeight="Bold" 
+                 
+        Foreground="Brown" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0"/>
+
+        <StackPanel Grid.Row="1" Margin="20">
+            <Expander Header="Configuration" FontSize="16" IsExpanded="True">
+                <StackPanel>
+                    <TextBox Text="        DELTA APP" FontWeight="Bold" Width="200" Margin="10" FontSize="18"
+                             Background="AliceBlue" Foreground="Brown" />
+                    <ComboBox Width="200" Margin="10" Background="SaddleBrown">
+                        <ComboBoxItem Content="Option 1"/>
+                        <ComboBoxItem Content="Option 2"/>
+                    </ComboBox>
+                 
+                    <Button Content="Save Settings" Width="200" Margin="10" Background="SaddleBrown" 
+                           Foreground="White"    Click="SaveSettingsButton_Click"/>
+                  
+                    <TextBlock Text="Application Behavior" FontWeight="Bold" Margin="5"/>
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <RadioButton Content="Manual" GroupName="OperationMode"/>
+                        <RadioButton Content="Automatic" GroupName="OperationMode" Margin="10,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Expander>
+
+            <Expander Header="Statistics" FontSize="16" IsExpanded="False">
+                <StackPanel>
+                    <ListView Margin="10">
+                        <ListViewItem Content="Data Point 1"/>
+                        <ListViewItem Content="Data Point 2"/>
+                        <ListViewItem Content="Data Point 3"/>
+                    </ListView>
+                </StackPanel>
+            </Expander>
+        </StackPanel>
+    </Grid>
+</Window>

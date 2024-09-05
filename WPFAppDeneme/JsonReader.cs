@@ -3,6 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
+using System.Windows;
+using System.Windows.Media;
+
+
 namespace WPFAppDeneme
 {
     public class JsonReader
@@ -11,8 +15,8 @@ namespace WPFAppDeneme
         {
             try
             {
-                string jsonContent = File.ReadAllText("path/to/your/file.json");
-                // Process the JSON content
+                string jsonContent = File.ReadAllText(@"C:\Users\vahde\source\repos\WPFAppDeneme\WPFAppDeneme\json-schema1.json");  ///dosya yolunu tam olarak nasıl 
+                // 
                 Console.WriteLine("File read successfully.");
             }
             catch (FileNotFoundException ex)
@@ -24,9 +28,17 @@ namespace WPFAppDeneme
                 Console.WriteLine("An error occurred: " + ex.Message);
             }
         }
-    
 
-    public static List<AppData> LoadAppDataFromJson(string filePath)
+        public class JsonFileFormat
+        {
+            public string Color { get; set; }
+            public string Name { get; set; }
+            public List<string> Versions { get; set; }
+        
+        }
+       
+
+        public static List<AppData> LoadAppDataFromJson(string filePath)
         {
             if (!File.Exists(filePath))
             {
