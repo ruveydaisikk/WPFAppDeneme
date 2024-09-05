@@ -75,6 +75,8 @@ namespace WPFAppDeneme
             public string Page { get; set; }
             public string Version { get; set; }
             public DateTime CreationDate { get; set; }
+            public string Category { get; set; }
+            public List<string> Categories { get; set; }
         }
 
         private void ReadAndDisplayJson()
@@ -95,7 +97,15 @@ namespace WPFAppDeneme
                 string message = "Uygulama Bilgileri:\n";
                 foreach (var app in applications)
                 {
-                    message += $"Name: {app.Name}\nDescription: {app.Description}\nPage: {app.Page}\nVersion: {app.Version}\nCreation Date: {app.CreationDate.ToShortDateString()}\n\n";
+                    // Categories özelliğinin null olup olmadığını kontrol et ve boş bir liste ata
+                    if (app.Categories == null)
+                    {
+                        app.Categories = new List<string>();
+                    }
+
+                    // JSON'daki değeri okuduğundan emin ol
+                    string categories = app.Categories.Any() ? string.Join(", ", app.Categories) : string.Empty;
+                    message += $"Name: {app.Name}\nDescription: {app.Description}\nPage: {app.Page}\nVersion: {app.Version}\nCreation Date: {app.CreationDate.ToShortDateString()}\nCategory: {app.Category}\n\n";
                 }
 
                 MessageBox.Show(message);
@@ -105,7 +115,6 @@ namespace WPFAppDeneme
                 MessageBox.Show($"Bir hata oluştu: {ex.Message}");
             }
         }
-
 
         private void OpenApplicationPage(string pageName)
         {

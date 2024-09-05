@@ -4,34 +4,39 @@
     "Description": "Delta Application",
     "Page": "DeltaPage",
     "Version": "4.0.0",
-    "CreationDate": "2024-09-01"
+    "CreationDate": "2024-09-01",
+    "Category": "Thermal"
   },
   {
     "Name": "Base",
     "Description": "Base Application",
     "Page": "BasePage",
     "Version": "2.1.0",
-    "CreationDate": "2023-11-15"
+    "CreationDate": "2023-11-15",
+    "Category": "Material"
   },
   {
     "Name": "Alpha",
     "Description": "Alpha Application",
     "Page": "AlphaPage",
     "Version": "3.5.0",
-    "CreationDate": "2023-12-20"
+    "CreationDate": "2023-12-20",
+    "Category": "All"
   },
   {
     "Name": "FIRTREE",
     "Description": "FIRTREE Application",
     "Page": "FIRTREEPage",
     "Version": "1.0.0",
-    "CreationDate": "2024-05-10"
+    "CreationDate": "2024-05-10",
+    "Category": "Structural"
   },
   {
     "Name": "OMEGA",
     "Description": "OMEGA Application",
     "Page": "OMEGAPage",
     "Version": "2.3.1",
-    "CreationDate": "2024-07-25"
+    "CreationDate": "2024-07-25",
+    "Category": "Thermal"
   }
 ]
