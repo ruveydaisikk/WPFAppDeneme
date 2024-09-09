@@ -5,7 +5,10 @@
     "Page": "DeltaPage",
     "Version": "4.0.0",
     "CreationDate": "2024-09-01",
-    "Category": "Thermal"
+    "Category": [
+      "Material",
+      "All"
+    ]
   },
   {
     "Name": "Base",
@@ -13,7 +16,7 @@
     "Page": "BasePage",
     "Version": "2.1.0",
     "CreationDate": "2023-11-15",
-    "Category": "Material"
+    "Category": [ "Material" ]
   },
   {
     "Name": "Alpha",
@@ -21,7 +24,7 @@
     "Page": "AlphaPage",
     "Version": "3.5.0",
     "CreationDate": "2023-12-20",
-    "Category": "All"
+    "Category": [ "All" ]
   },
   {
     "Name": "FIRTREE",
@@ -29,14 +32,7 @@
     "Page": "FIRTREEPage",
     "Version": "1.0.0",
     "CreationDate": "2024-05-10",
-    "Category": "Structural"
-  },
-  {
-    "Name": "OMEGA",
-    "Description": "OMEGA Application",
-    "Page": "OMEGAPage",
-    "Version": "2.3.1",
-    "CreationDate": "2024-07-25",
-    "Category": "Thermal"
+    "Category": [ "Structural" ]
   }
+
 ]

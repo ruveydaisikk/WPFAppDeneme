@@ -1,8 +1,12 @@
 ﻿<Window x:Class="WPFAppDeneme.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WPFAppDeneme"
         Title="MTAG Apps Market" Height="800" Width="1000">
-    <Grid>
+    <Grid x:Name="MainGrid">
+        <Grid>
+            <!-- UserControl'ü Grid'e ekleyin -->
+            <local:UserControl1 Margin="218,88,296.6,344.4"/>
+        </Grid>
         <Border x:Name="border" Width="200" Height="200" />
         <StackPanel x:Name="ApplicationStackPanel" Orientation="Vertical" />
 
@@ -89,65 +93,39 @@
         Foreground="White"
         FontWeight="Bold"
         Click="ViewErrors_Click" Margin="10,0,88.4,10.4" 
+        Grid.Row="1"  />
+
+
+                        <Expander Header="Categories" Foreground="White" FontSize="16" Grid.ColumnSpan="4" Margin="-1,9.6,10.6,5.4" Grid.Row="1">
+                            <StackPanel Name="CategoriesOptionsPanel" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                <CheckBox Content="Material" Foreground="White" Background="#99badd" Margin="10" Checked="CategoryCheckBox_Checked" Unchecked="CategoryCheckBox_Unchecked"/>
+                                <CheckBox Content="Structural" Foreground="White" Background="#99badd" Margin="10" Checked="CategoryCheckBox_Checked" Unchecked="CategoryCheckBox_Unchecked"/>
+                                <CheckBox Content="Thermal" Foreground="White" Background="#99badd" Margin="10" Checked="CategoryCheckBox_Checked" Unchecked="CategoryCheckBox_Unchecked"/>
+                                <CheckBox Content="All" Foreground="White" Background="#99badd" Margin="10" Width="44" Checked="CategoryCheckBox_Checked" Unchecked="CategoryCheckBox_Unchecked"/>
+                            </StackPanel>
+                        </Expander>
+                        <Button Content="Check for Errors!" 
+        Width="120" Height="30" 
+        HorizontalAlignment="Center" 
+        VerticalAlignment="Bottom"
+        FontSize="13"
+        Background="#FF5722" 
+        Foreground="White"
+        FontWeight="Bold"
+        BorderBrush="#FF50B8EE"
+        Click="CheckForErrors_Click" Margin="142,0,134.8,10.4" Grid.Row="1" Grid.ColumnSpan="2"
+        />
+                        <Button Content="View Errors" 
+        Width="100" Height="30" 
+        HorizontalAlignment="Center" 
+        VerticalAlignment="Bottom"
+        FontSize="12"
+        Background="#FF0000" 
+        Foreground="White"
+        FontWeight="Bold"
+        Click="ViewErrors_Click" Margin="10,0,88.4,10.4" 
         Grid.Row="1" 
         />
-                       <Expander Header="Categories" Foreground="White" FontSize="16" Grid.ColumnSpan="4" 
-          Margin="0,0,9.6,45.4" Grid.RowSpan="2">
-    <StackPanel Name="CategoriesOptionsPanel" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-        <CheckBox Content="Material" Foreground="White" Background="#99badd" Margin="10"/>
-        <CheckBox Content="Structural" Foreground="White" Background="#99badd" Margin="10"/>
-        <CheckBox Content="Thermal" Foreground="White" Background="#99badd" Margin="10"/>
-    </StackPanel>
-</Expander>
-                        <Border Grid.Row="1" Grid.Column="0" Margin="52,410,10.4,236.4" Background="#FFFFFF" CornerRadius="5">
-                            <StackPanel Orientation="Vertical" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Rectangle Width="40" Height="40" Fill="Blue" Margin="5"/>
-                                <TextBlock Text="BASE" Foreground="Black" FontSize="16" HorizontalAlignment="Center"/>
-                                <TextBlock Text="V:1.2.0 Release" Foreground="Gray" FontSize="10" HorizontalAlignment="Center"/>
-                            </StackPanel>
-                        </Border>
-
-                        <Border Grid.Row="1" Margin="112.6,182,142.2,464.4" Background="#FFFFFF" CornerRadius="5" Grid.Column="1" Grid.ColumnSpan="2">
-                            <StackPanel Orientation="Vertical" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Rectangle Width="40" Height="40" Fill="Red" Margin="5"/>
-                                <TextBlock Text="FIRTREE" Foreground="Black" FontSize="16" HorizontalAlignment="Center"/>
-                                <TextBlock Text="V:1.0.0 Release" Foreground="Gray" FontSize="10" HorizontalAlignment="Center"/>
-                            </StackPanel>
-                        </Border>
-
-                        <Border Grid.Row="1" Grid.Column="1" Margin="112.6,410,142.2,236.4" Background="#FFFFFF" CornerRadius="5" Grid.ColumnSpan="2">
-                            <StackPanel Orientation="Vertical" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Rectangle Width="40" Height="40" Fill="Green" Margin="5"/>
-                                <TextBlock Text="ALPHA" Foreground="Black" FontSize="16" HorizontalAlignment="Center"/>
-                                <TextBlock Text="V:2.0.0 Release" Foreground="Gray" FontSize="10" HorizontalAlignment="Center"/>
-                            </StackPanel>
-                        </Border>
-
-                        <TextBlock Text="Uygulama Bilgileri" Foreground="Black"  FontWeight="Bold"
-                             FontSize="18" Margin="38.8,76,-72.4,652.4" MouseLeftButtonDown="ShowApplicationData_Click" Grid.Column="3" Grid.Row="1"/>
-                        <Image Source="C:\Users\vahde\Downloads\Rüveyda\app-development.png" 
-                               Margin="38.8,0,36.6,694.4" MouseLeftButtonDown="ShowApplicationData_Click" Grid.RowSpan="2" Grid.Column="3"/>
-
-                        <Border Grid.Row="1" Grid.Column="2" Margin="168.2,182,98.6,464.4" Background="#FFFFFF" CornerRadius="5" Grid.ColumnSpan="2">
-                            <StackPanel Orientation="Vertical" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Rectangle Width="40" Height="40" Fill="Orange" Margin="5"/>
-                                <TextBlock Text="OMEGA" Foreground="Black" FontSize="16" HorizontalAlignment="Center"/>
-                                <TextBlock Text="V:3.0.0 Release" Foreground="Gray" FontSize="10" HorizontalAlignment="Center"/>
-                            </StackPanel>
-                        </Border>
-
-                        <Border Grid.Row="1" Grid.Column="0" Margin="52,182,10.4,464.4"
-        Background="#FFFFFF" CornerRadius="5"
-        MouseLeftButtonDown="DeltaBorder_MouseLeftButtonDown"
-        Cursor="Hand">
-                            <StackPanel Orientation="Vertical" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Rectangle Width="50" Height="40" Fill="Purple" Margin="5"/>
-                                <TextBlock Text="DELTA" Foreground="Black" FontSize="16" HorizontalAlignment="Center"/>
-                                <TextBlock Text="V:4.0.0 Release" Foreground="Gray" FontSize="10" HorizontalAlignment="Center"/>
-                            </StackPanel>
-                        </Border>
-
-
                         <Button Content="Open Request Form" 
         Width="159" Height="42" 
         HorizontalAlignment="Center" 
@@ -156,8 +134,7 @@
         Background="#FF5722" 
         Foreground="White"
         FontWeight="Bold"
-        
-        Click="OpenRequestForm_Click" Margin="78.2,0,159.6,708.4" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="2" 
+        Click="OpenRequestForm_Click" Margin="28.8,0,10.6,718.4" Grid.Row="1" Grid.Column="3" 
         >
 
                             <Button.Style>
@@ -172,12 +149,10 @@
                                     </Style.Triggers>
                                 </Style>
                             </Button.Style>
-
                         </Button>
                     </Grid>
                 </Grid>
             </Border>
         </Grid>
-
     </Grid>
 </Window>

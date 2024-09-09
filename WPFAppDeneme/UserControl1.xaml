@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPFAppDeneme"
              mc:Ignorable="d" Height="337.5" Width="406.83">
-    <CheckBox Content="CheckBox" HorizontalAlignment="Left" Height="32" Margin="312,101,0,0" VerticalAlignment="Top" Width="85"/>
+    <Grid Margin="0,0,10.2,-235.4">
+        <TextBlock x:Name="MyTextBlock" HorizontalAlignment="Left" Height="25" Margin="10,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168"><Run Text="Name:"/></TextBlock>
+        <Button Content="Göster" Margin="21,48,291,501"/>
+    </Grid>
 </UserControl>

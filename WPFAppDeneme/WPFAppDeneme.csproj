@@ -205,6 +205,7 @@
     <Compile Include="AppCreatorWindow.xaml.cs">
       <DependentUpon>AppCreatorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ApplicationData.cs" />
     <Compile Include="ApplicationPage.cs" />
     <Compile Include="BasePage.cs" />
     <Compile Include="DeltaPage.cs" />
@@ -332,6 +333,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="json-schema1.json" />
+    <None Include="json-schema2.json" />
+    <None Include="json-schema3.json" />
+    <None Include="json-schema4.json" />
+    <None Include="json-schema5.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -398,7 +403,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties json-schema1_1json__JsonSchema="https://carafe.fm/schema/draft-02/bundle.schema.json" />
+      <UserProperties json-schema2_1json__JsonSchema="https://cdn.jsdelivr.net/npm/liblab@latest/liblab.config.schema.json" json-schema1_1json__JsonSchema="https://carafe.fm/schema/draft-02/bundle.schema.json" />
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />

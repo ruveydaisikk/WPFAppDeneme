@@ -1,0 +1,9 @@
+[ {
+  "Name": "Base",
+  "Description": "Base Application",
+  "Page": "BasePage",
+  "Version": "2.1.0",
+  "CreationDate": "2023-11-15",
+  "Category": "Material"
+}
+]
